@@ -125,13 +125,13 @@ function analyzeSalesData(data, options) {
     return sellerStats.map(seller => ({
         seller_id: seller.id,
         name: seller.name,
-        revenue: seller.revenue.toFixed(2),
-        profit: seller.profit.toFixed(2),
+        revenue: +seller.revenue.toFixed(2),
+        profit: +seller.profit.toFixed(2),
         sales_count: seller.sales_count,
         top_products: Object.entries(seller.products_sold)
             .sort(([, quantityA], [, quantityB]) => quantityB -  quantityA)
             .slice(0, 10)
             .map(([sku, quantity]) => ({sku, quantity})),
-        bonus: seller.bonus.toFixed(2),
+        bonus: +seller.bonus.toFixed(2),
     }));
 }
